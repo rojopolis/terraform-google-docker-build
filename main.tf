@@ -1,7 +1,7 @@
 locals {
     build_command = <<EOF
         ${path.module}/scripts/gcr-docker-build.sh \
-        ${var.gcp_token} ${var.name}:${var.tag} ${var.gcp_project} ${var.context}
+        ${var.gcp_token} ${var.name}:${var.tag} ${var.gcp_project} ${var.context} ${var.build_platform}
     EOF
 }
 
@@ -18,4 +18,6 @@ data "external" "gcr_image_info" {
         "${var.tag}",
         "${var.gcp_project}",
     ]
+
+    depends_on = [null_resource.gcr_docker_image]
 }
