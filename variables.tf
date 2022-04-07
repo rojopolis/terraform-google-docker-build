@@ -1,22 +1,22 @@
 variable "gcp_project" {
     description = "GCP Project to target."
-    type        = "string"
+    type        = string
 }
 
 variable "gcp_token" {
     description = "GCP Authentication token."
-    type        = "string"
+    type        = string
 }
 
 
 variable "name" {
     description = "Name of the image."
-    type        = "string"
+    type        = string
 }
 
 variable "tag" {
     description = "Image tag."
-    type        = "string"
+    type        = string
     default     = "latest"
 }
 
@@ -27,5 +27,11 @@ variable "context" {
         For example, your build can use a COPY instruction to reference a file
         in the context.
     EOF
-    type        = "string"
+    type        = string
+}
+
+variable "build_platform" {
+    description = "Architecture to build the image for. Defaults to 'linux/amd64'."
+    type = string
+    default = "linux/amd64"
 }
