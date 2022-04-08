@@ -6,6 +6,10 @@ locals {
 }
 
 resource "null_resource" "gcr_docker_image" {
+  triggers {
+    build_number = "${timestamp()}"
+  }
+  
   provisioner "local-exec" {
     command = "${local.build_command}"
   }
